@@ -10,7 +10,7 @@ yum install git
 #这是ubuntu安装git
 apt-get install git
 #获取脚本
-git https://github.com/null-ecp/FFM-one-step.git
+git clone https://github.com/null-ecp/FFM-one-step.git
 source ./FFM-one-step/FFM.sh
 ```
 **然后执行脚本选完之后等待安装完毕即可，注意中途输入y或者yes确定**
