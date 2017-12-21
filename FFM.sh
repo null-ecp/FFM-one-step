@@ -17,6 +17,16 @@ Debian(){  #Debian install about
 	apt-get -y install perl vim openssl ca-certificates \
 		libssl-dev curl build-essential screen git
 }
+Uninstall(){
+	echo 'Uninstall FFM Server,Exiting...'
+	sleep 3s
+	exit
+}
+Selecterr(){
+	echo 'Input Option error,Exiting...'
+	sleep 3s
+	exit
+}
 #system select
 echo -e 'Please select your system(input Option number)
 1)Centos
@@ -33,13 +43,9 @@ if [ $sysnum = 1 ]; then
 		sleep 3s
 		Centos
 	elif [ $temp = n ]; then
-		echo 'Uninstall Centos‘s FFM,Exiting...'
-		sleep 3s
-		exit
+		Uninstall
 	else
-		echo 'Input Option error,Exiting...'
-		sleep 3s
-		exit
+		Selecterr
 	fi
 elif [ $sysnum = 2 ]; then
 	echo 'Do you want to install Ubuntu’s FFM?(y/n)
@@ -50,13 +56,9 @@ elif [ $sysnum = 2 ]; then
 		sleep 3s
 		Ubuntu
 	elif [ $temp = n ]; then
-		echo 'Uninstall Ubuntu’s FFM,Exiting...'
-		sleep 3s
-		exit
+		Uninstall
 	else
-		echo 'Input Option error,Exiting...'
-		sleep 3s
-		exit
+		Selecterr
 	fi
 elif [ $sysnum = 3 ]; then
 	echo 'Do you want to install Debian’s FFM?(y/n)
@@ -67,18 +69,12 @@ elif [ $sysnum = 3 ]; then
 		sleep 3s
 		Debian
 	elif [ $temp = n ]; then
-		echo 'Uninstall Debian’s FFM,Exiting...'
-		sleep 3s
-		exit
+		Uninstall
 	else
-		echo 'Input option error,Exiting...'
-		sleep 3s
-		exit
+		Selecterr
 	fi
 else
-	echo 'Input option error,Exiting...'
-	sleep 3s
-	exit
+	Selecterr
 fi
 
 #install cpanm
