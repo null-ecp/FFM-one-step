@@ -15,7 +15,8 @@ Ubuntu(){  #Ubuntu install about
 Debian(){  #Debian install about
 	apt-get update
 	apt-get -y install perl vim openssl ca-certificates \
-		libssl-dev curl build-essential screen git
+		libssl-dev curl build-essential screen git \
+		libnet-ssleay-perl libio-socket-ssl-perl
 }
 Uninstall(){
 	echo 'Uninstall FFM Server,Exiting...'
