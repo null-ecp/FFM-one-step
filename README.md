@@ -8,6 +8,7 @@
 #这是centos安装git
 yum install git
 #这是ubuntu安装git
+apt-get update
 apt-get install git
 #获取脚本
 git clone https://github.com/null-ecp/FFM-one-step.git
