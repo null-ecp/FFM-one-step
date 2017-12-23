@@ -52,13 +52,13 @@ $client->load(\"GCM\",data=>{
 }
 Mojowxgcm(){ #mojowx GCM about
 	echo "use Mojo::Weixin;
-my $client = Mojo::Weixin->new(log_encoding=>"utf-8");
-$client->load("ShowMsg");
-$client->load("GCM",data=>{
+my $client = Mojo::Weixin->new(log_encoding=>\"utf-8\");
+$client->load(\"ShowMsg\");
+$client->load(\"GCM\",data=>{
     api_url => 'https://gcm-http.googleapis.com/gcm/send',
     api_key=>'AIzaSyB18io0hduB_3uHxKD3XaebPCecug27ht8',
-    registration_ids=>["输入你自己从 GCMForMojo APP中获取到的令牌"],
-    allow_group=>["接收消息的群名称，不填则接收全部"", 分隔"],
+    registration_ids=>[\"输入你自己从 GCMForMojo APP中获取到的令牌\"],
+    allow_group=>[\"接收消息的群名称，不填则接收全部\"\", 分隔\"],
     ban_group=>[],
     allow_discuss=>[],
     ban_discuss=>[],
@@ -67,11 +67,11 @@ $client->load("GCM",data=>{
 }
 Mojoqqmi(){  #mojoqq mioush about
 	echo "use Mojo::Webqq;
-my $client = Mojo::Webqq->new(log_encoding=>"utf-8");
-$client->load("ShowMsg");
-$client->load("MiPush",data=>{
-    registration_ids=>[""],
-    allow_group=>["接收群消息的号码，如需要推送全部群消息可删除这一行，每个群号码之间使用 "", 分隔"],
+my $client = Mojo::Webqq->new(log_encoding=>\"utf-8\");
+$client->load(\"ShowMsg\");
+$client->load(\"MiPush\",data=>{
+    registration_ids=>[\"\"],
+    allow_group=>[\"接收群消息的号码，如需要推送全部群消息可删除这一行，每个群号码之间使用 \"\", 分隔\"],
     ban_group=>[],
     allow_discuss=>[],
     ban_discuss=>[],
@@ -80,11 +80,11 @@ $client->load("MiPush",data=>{
 }
 Mojowxmi(){  #mojowx mipush about
 	echo "use Mojo::Weixin;
-my $client = Mojo::Weixin->new(log_encoding=>"utf-8");
-$client->load("ShowMsg");
-$client->load("MiPush",data=>{
-    registration_ids=>[""],
-    allow_group=>["接收群消息的名称，如需要推送全部群消息可删除这一行，每个群号码之间使用 "", 分隔"],
+my $client = Mojo::Weixin->new(log_encoding=>\"utf-8\");
+$client->load(\"ShowMsg\");
+$client->load(\"MiPush\",data=>{
+    registration_ids=>[\"\"],
+    allow_group=>[\"接收群消息的名称，如需要推送全部群消息可删除这一行，每个群号码之间使用 \"\", 分隔\"],
     ban_group=>[],
     allow_discuss=>[],
     ban_discuss=>[],
@@ -99,8 +99,8 @@ Mojoqqopen(){  #openqq
 $client->run();">>/root/qq.pl
 }
 Mojowxopen(){  #openwx
-	echo "$client->load("Openwx",data=>{
-    listen => [{host=>"0.0.0.0",port=>5000}, ] ,
+	echo "$client->load(\"Openwx\",data=>{
+    listen => [{host=>\"0.0.0.0\",port=>5000}, ] ,
 });
 #不需要 APP 内回复功能请删除以上三行（不包括被 # 号注释掉的几行）
 $client->run();">>/root/wx.pl
@@ -121,15 +121,15 @@ delwx(){  #judgment wx.pl
 }
 Pselect(){
 	echo 'Which version do you want to install?(input Option number)
-	1) GCM push
-	2) Mipush
-	--------------------------------------------'
+1) GCM push
+2) Mipush
+--------------------------------------------'
 }
 Tselect(){
 	echo 'Which version do you want to install?(input Option number)
-	1) GCMforMojoqq
-	2) GCMforMojowx
-	--------------------------------------------'
+1) GCMforMojoqq
+2) GCMforMojowx
+--------------------------------------------'
 }
 Installgfm(){
 	Tselect
@@ -199,7 +199,7 @@ elif [ $sysnum = 2 ]; then
 ---------------------------------'
 	read temp
 	if [ $temp = y ]; then
-		echo 'Installing Ubuntu‘s FFM...'
+		Installgfm
 		sleep 3s
 		Ubuntu
 	elif [ $temp = n ]; then
@@ -212,7 +212,7 @@ elif [ $sysnum = 3 ]; then
 ---------------------------------'
 	read temp
 	if [ $temp = y ]; then
-		echo 'Installing Debian‘s FFM...'
+		Installgfm
 		sleep 3s
 		Debian
 	elif [ $temp = n ]; then
@@ -223,3 +223,20 @@ elif [ $sysnum = 3 ]; then
 else
 	Selecterr
 fi
+#install cpanm
+curl -L https://cpanmin.us | perl - App::cpanminus
+
+#install Mojoqq
+for i in $(seq 1 3):
+do
+	cpanm Mojo::Webqq
+	sleep 2s
+done
+#install Mojowx
+for i in $(seq 1 3):
+do
+	cpanm Mojo::Weixin
+	sleep 2s
+done
+
+cd
