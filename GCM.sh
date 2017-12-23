@@ -64,3 +64,4 @@ $client->load("Openqq",data=>{
 #不需要 APP 内回复功能请删除以上三行（不包括被 # 号注释掉的几行）
 $client->run();'>>~/qq.pl
 }
+Mojoqq
