@@ -147,8 +147,8 @@ Installgfm(){
 			echo 'you select install Mojoqq Mi push ,the server installing ...'
 			sleep 3s
 			delqq
-			mojoqqmi
-			mojoqqopen
+			Mojoqqmi
+			Mojoqqopen
 		else
 			Selecterr
 		fi
@@ -165,8 +165,8 @@ Installgfm(){
 			echo 'you select install Mojowx Mi push ,the server installing ...'
 			sleep 3s
 			delwx
-			mojowxmi
-			mojowxopen
+			Mojowxmi
+			Mojowxopen
 		else
 			Selecterr
 		fi
