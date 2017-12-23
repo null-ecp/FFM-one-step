@@ -64,4 +64,11 @@ $client->load("Openqq",data=>{
 #不需要 APP 内回复功能请删除以上三行（不包括被 # 号注释掉的几行）
 $client->run();'>>~/qq.pl
 }
-Mojoqq
+
+echo '是否安装Mojoqq(y/n)'
+read select
+if [ select = y ]; then
+	Mojoqq
+else
+	exit
+fi
