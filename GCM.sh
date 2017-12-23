@@ -1,4 +1,11 @@
 #!/bin/bash
+#======================================================
+#	System Required: CentOS 6+,Debian8+,Ubuntu14+
+#	Description: GCMforMojo server
+#	Version: 1.0.2
+#	Author: null-ecp
+#	Blog: https://blog.null26.com/
+#=======================================================
 Centos(){  #centos install about
 	yum makecache
 	yum -y groupinstall "Development Tools"
@@ -19,7 +26,7 @@ Debian(){  #Debian install about
 		libnet-ssleay-perl libio-socket-ssl-perl
 }
 Uninstall(){
-	echo 'Uninstall GCM Server,Exiting...'
+	echo 'Uninstall GCMforMojo Server,Exiting...'
 	sleep 3s
 	exit
 }
@@ -28,7 +35,7 @@ Selecterr(){
 	sleep 3s
 	exit
 }
-MojoqqGCM(){
+Mojoqqgcm(){ #MOjoqq GCM about
 	echo "use Mojo::Webqq;
 my $client = Mojo::Webqq->new(log_encoding=>"utf-8");
 $client->load("ShowMsg");
@@ -43,7 +50,7 @@ $client->load("GCM",data=>{
     #此处为讨论组，填写格式同上
 });">>/root/qq.pl
 }
-MojowxGCM(){
+Mojowxgcm(){ #mojowx GCM about
 	echo "use Mojo::Weixin;
 my $client = Mojo::Weixin->new(log_encoding=>"utf-8");
 $client->load("ShowMsg");
@@ -58,7 +65,7 @@ $client->load("GCM",data=>{
     #此处为讨论组，填写格式同上
 });">>/root/wx.pl
 }
-Mojoqqmi(){
+Mojoqqmi(){  #mojoqq mioush about
 	echo "use Mojo::Webqq;
 my $client = Mojo::Webqq->new(log_encoding=>"utf-8");
 $client->load("ShowMsg");
@@ -71,7 +78,7 @@ $client->load("MiPush",data=>{
     #此处为讨论组，填写格式同上
 });">>/root/qq.pl
 }
-Mojowxmi(){
+Mojowxmi(){  #mojowx mipush about
 	echo "use Mojo::Weixin;
 my $client = Mojo::Weixin->new(log_encoding=>"utf-8");
 $client->load("ShowMsg");
@@ -84,29 +91,132 @@ $client->load("MiPush",data=>{
     #此处为讨论组，填写格式同上
 });">>/root/wx.pl
 }
-Mojoqqopen(){
+Mojoqqopen(){  #openqq
 	echo "$client->load("Openqq",data=>{
     listen => [{host=>"0.0.0.0",port=>5000}, ] ,
 });
 #不需要 APP 内回复功能请删除以上三行（不包括被 # 号注释掉的几行）
 $client->run();">>/root/qq.pl
 }
-Mojowxopen(){
+Mojowxopen(){  #openwx
 	echo "$client->load("Openwx",data=>{
     listen => [{host=>"0.0.0.0",port=>5000}, ] ,
 });
 #不需要 APP 内回复功能请删除以上三行（不包括被 # 号注释掉的几行）
 $client->run();">>/root/wx.pl
 }
-delqq(){
+delqq(){  #judgment qq.pl
 	if [ -f "/root/qq.pl" ]; then
 		rm -rf /root/qq.pl
 	else
 		touch /root/qq.pl
 	fi
 }
-echo 'are you want del qq?(y/n)'
-read result
-if [ $result = y ]; then
-	delqq
+delwx(){  #judgment wx.pl
+	if [ -f "/root/wx.pl" ]; then
+		rm -rf /root/wx.pl
+	else
+		touch /root/wx.pl
+	fi
+}
+Pselect(){
+	echo 'Which version do you want to install?(input Option number)
+		1) GCM push
+		2) Mipush
+		--------------------------------------------'
+}
+Tselect(){
+	echo 'Which version do you want to install?(input Option number)
+		1) GCMforMojoqq
+		2) GCMforMojowx
+		--------------------------------------------'
+}
+Installgfm(){
+	Tselect
+	read tversion
+	if [ tversion = 1 ]; then #install mojoqq
+		Pselect
+		read pversion
+		if [ pversion = 1 ]; then #install 
+			echo 'you select install Mojoqq GCM push ,the server installing ...'
+			sleep 3s
+			delqq
+			Mojoqqgcm
+			Mojoqqopen
+		elif [ pversion = 2 ]; then
+			echo 'you select install Mojoqq Mi push ,the server installing ...'
+			sleep 3s
+			delqq
+			mojoqqmi
+			mojoqqopen
+		else
+			Selecterr
+	elif [ tversion = 2 ]; then #installmojowx
+		read pversion
+		if [ pversion = 1 ]; then #install 
+			echo 'you select install Mojowx GCM push ,the server installing ...'
+			sleep 3s
+			delwx
+			Mojowxgcm
+			Mojowxopen
+		elif [ pversion = 2 ]; then
+			echo 'you select install Mojowx Mi push ,the server installing ...'
+			sleep 3s
+			delwx
+			mojowxmi
+			mojowxopen
+		else
+			Selecterr
+	else
+		Selecterr
+	fi
+}
+# system select and GCMformojo version select
+echo -e 'Please select your system(input Option number)
+1)Centos
+2)Ubuntu
+3)debian
+-----------------------------------------'
+read sysnum
+if [ $sysnum = 1 ]; then
+	echo 'Do you want to install Centos’s GCMforMojo?(y/n)
+-----------------------------------------'
+	read temp
+	if [ $temp = y ]; then
+		Installgfm
+		sleep 3s
+		Centos
+	elif [ $temp = n ]; then
+		Uninstall
+	else
+		Selecterr
+	fi
+elif [ $sysnum = 2 ]; then
+	echo 'Do you want to install Ubuntu’s FFM?(y/n)
+---------------------------------'
+	read temp
+	if [ $temp = y ]; then
+		echo 'Installing Ubuntu‘s FFM...'
+		sleep 3s
+		Ubuntu
+	elif [ $temp = n ]; then
+		Uninstall
+	else
+		Selecterr
+	fi
+elif [ $sysnum = 3 ]; then
+	echo 'Do you want to install Debian’s FFM?(y/n)
+---------------------------------'
+	read temp
+	if [ $temp = y ]; then
+		echo 'Installing Debian‘s FFM...'
+		sleep 3s
+		Debian
+	elif [ $temp = n ]; then
+		Uninstall
+	else
+		Selecterr
+	fi
+else
+	Selecterr
 fi
