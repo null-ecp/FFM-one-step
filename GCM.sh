@@ -67,7 +67,7 @@ $client->run();'>>~/qq.pl
 
 echo '是否安装Mojoqq(y/n)'
 read select
-if [ select = y ]; then
+if [ $select = y ]; then
 	Mojoqq
 else
 	exit
