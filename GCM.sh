@@ -151,6 +151,7 @@ Installgfm(){
 			mojoqqopen
 		else
 			Selecterr
+		fi
 	elif [ tversion = 2 ]; then #installmojowx
 		read pversion
 		if [ pversion = 1 ]; then #install 
@@ -167,6 +168,7 @@ Installgfm(){
 			mojowxopen
 		else
 			Selecterr
+		fi
 	else
 		Selecterr
 	fi
