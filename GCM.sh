@@ -28,42 +28,6 @@ Selecterr(){
 	sleep 3s
 	exit
 }
-Mojoqq(){ #mojoqqinstall
-	if [ -f "~/qq.pl" ]; then
-		rm -rf ~/qq.pl
-	else 
-		touch ~/qq.pl
-	fi
-	echo -e 'use Mojo::Webqq;
-	my $client = Mojo::Webqq->new(log_encoding=>"utf-8");
-	$client->load("ShowMsg");
-	#请根据自己所需的推送服务进行选择并删除或注释不需要的部分，填写格式请仿照 GCM 的方式填写
-	#以下为 GCM 推送
-	$client->load("GCM",data=>{
-    		api_url => \'https://gcm-http.googleapis.com/gcm/send\',
-    		api_key=>\'AIzaSyB18io0hduB_3uHxKD3XaebPCecug27ht8\',
-    		registration_ids=>["输入你自己从 GCMForMojo APP中获取到的令牌"],
-    		allow_group=>["接收群消息的号码，如需要推送全部群消息可删除这一行，每个群号码之间使用 "", 分隔"],
-    		ban_group=>[],
-    		allow_discuss=>[],
-    		ban_discuss=>[],
-    		#此处为讨论组，填写格式同上
-	});
-	#以下为 MiPush 推送
-	$client->load("MiPush",data=>{
-    		registration_ids=>[""],
-    		allow_group=>[""],
-   		ban_group=>[],
-    		allow_discuss=>[],
-    		ban_discuss=>[],
-	});
-	$client->load("Openqq",data=>{
-    		listen => [{host=>"0.0.0.0",port=>5000}, ] ,
-    		#如果是推送微信的话需要保证端口不重复，并请保证所设定的端口已经在防火墙内放行，同时需要在 APP 内设定好推送服务器的地址和端口
-	});
-	#不需要 APP 内回复功能请删除以上三行（不包括被 # 号注释掉的几行）
-	$client->run();'>>~/qq.pl
-}
 #system select
 echo -e 'Please select your system(input Option number)
 1)Centos
@@ -124,7 +88,39 @@ do
 	sleep 2s
 done
 
-Mojoqq
+if [ -f "~/qq.pl" ]; then
+	rm -rf ~/qq.pl
+else 
+	touch ~/qq.pl
+fi
+echo -e 'use Mojo::Webqq;
+my $client = Mojo::Webqq->new(log_encoding=>"utf-8");
+$client->load("ShowMsg");
+#请根据自己所需的推送服务进行选择并删除或注释不需要的部分，填写格式请仿照 GCM 的方式填写
+#以下为 GCM 推送
+$client->load("GCM",data=>{
+    	api_url => \'https://gcm-http.googleapis.com/gcm/send\',
+    	api_key=>\'AIzaSyB18io0hduB_3uHxKD3XaebPCecug27ht8\',
+    	registration_ids=>["输入你自己从 GCMForMojo APP中获取到的令牌"],
+    	allow_group=>["接收群消息的号码，如需要推送全部群消息可删除这一行，每个群号码之间使用 "", 分隔"],
+    	ban_group=>[],
+    	allow_discuss=>[],
+    	ban_discuss=>[],
+    	#此处为讨论组，填写格式同上
+});
+#以下为 MiPush 推送
+$client->load("MiPush",data=>{
+    	registration_ids=>[""],
+    	allow_group=>[""],
+   	ban_group=>[],
+    	allow_discuss=>[],
+    	ban_discuss=>[],
+});
+$client->load("Openqq",data=>{
+    	listen => [{host=>"0.0.0.0",port=>5000}, ] ,
+    	#如果是推送微信的话需要保证端口不重复，并请保证所设定的端口已经在防火墙内放行，同时需要在 APP 内设定好推送服务器的地址和端口
+});
+#不需要 APP 内回复功能请删除以上三行（不包括被 # 号注释掉的几行）
+$client->run();'>>~/qq.pl
 
 cd
-
