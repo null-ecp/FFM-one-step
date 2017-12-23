@@ -28,11 +28,12 @@ Selecterr(){
 	sleep 3s
 	exit
 }
+file = "/root/qq.pl"
 Mojoqq(){
-	if [ -f "~/qq.pl" ]; then
-		rm -rf ~/qq.pl
+	if [ -f $file ]; then
+		rm -rf $file
 	else 
-		touch ~/qq.pl
+		touch $file
 	fi
 	echo 'use Mojo::Webqq;
 my $client = Mojo::Webqq->new(log_encoding=>"utf-8");
