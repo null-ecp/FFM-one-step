@@ -121,29 +121,29 @@ delwx(){  #judgment wx.pl
 }
 Pselect(){
 	echo 'Which version do you want to install?(input Option number)
-		1) GCM push
-		2) Mipush
-		--------------------------------------------'
+	1) GCM push
+	2) Mipush
+	--------------------------------------------'
 }
 Tselect(){
 	echo 'Which version do you want to install?(input Option number)
-		1) GCMforMojoqq
-		2) GCMforMojowx
-		--------------------------------------------'
+	1) GCMforMojoqq
+	2) GCMforMojowx
+	--------------------------------------------'
 }
 Installgfm(){
 	Tselect
 	read tversion
-	if [ tversion = 1 ]; then #install mojoqq
+	if [ $tversion = 1 ]; then #install mojoqq
 		Pselect
 		read pversion
-		if [ pversion = 1 ]; then #install 
+		if [ $pversion = 1 ]; then #install 
 			echo 'you select install Mojoqq GCM push ,the server installing ...'
 			sleep 3s
 			delqq
 			Mojoqqgcm
 			Mojoqqopen
-		elif [ pversion = 2 ]; then
+		elif [ $pversion = 2 ]; then
 			echo 'you select install Mojoqq Mi push ,the server installing ...'
 			sleep 3s
 			delqq
@@ -152,15 +152,16 @@ Installgfm(){
 		else
 			Selecterr
 		fi
-	elif [ tversion = 2 ]; then #installmojowx
+	elif [ $tversion = 2 ]; then #installmojowx
+		Pselect
 		read pversion
-		if [ pversion = 1 ]; then #install 
+		if [ $pversion = 1 ]; then #install 
 			echo 'you select install Mojowx GCM push ,the server installing ...'
 			sleep 3s
 			delwx
 			Mojowxgcm
 			Mojowxopen
-		elif [ pversion = 2 ]; then
+		elif [ $pversion = 2 ]; then
 			echo 'you select install Mojowx Mi push ,the server installing ...'
 			sleep 3s
 			delwx
