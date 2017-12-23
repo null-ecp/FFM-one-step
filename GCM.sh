@@ -37,9 +37,9 @@ Selecterr(){
 }
 Mojoqqgcm(){ #MOjoqq GCM about
 	echo -e "use Mojo::Webqq;
-my $client = Mojo::Webqq->new(log_encoding=>\"utf-8\");
-$client->load(\"ShowMsg\");
-$client->load(\"GCM\",data=>{
+my \$client = Mojo::Webqq->new(log_encoding=>\"utf-8\");
+\$client->load(\"ShowMsg\");
+\$client->load(\"GCM\",data=>{
     api_url => 'https://gcm-http.googleapis.com/gcm/send',
     api_key=>'AIzaSyB18io0hduB_3uHxKD3XaebPCecug27ht8',
     registration_ids=>[\"输入你自己从 GCMForMojo APP中获取到的令牌\"],
@@ -52,9 +52,9 @@ $client->load(\"GCM\",data=>{
 }
 Mojowxgcm(){ #mojowx GCM about
 	echo "use Mojo::Weixin;
-my $client = Mojo::Weixin->new(log_encoding=>\"utf-8\");
-$client->load(\"ShowMsg\");
-$client->load(\"GCM\",data=>{
+my \$client = Mojo::Weixin->new(log_encoding=>\"utf-8\");
+\$client->load(\"ShowMsg\");
+\$client->load(\"GCM\",data=>{
     api_url => 'https://gcm-http.googleapis.com/gcm/send',
     api_key=>'AIzaSyB18io0hduB_3uHxKD3XaebPCecug27ht8',
     registration_ids=>[\"输入你自己从 GCMForMojo APP中获取到的令牌\"],
@@ -67,9 +67,9 @@ $client->load(\"GCM\",data=>{
 }
 Mojoqqmi(){  #mojoqq mioush about
 	echo "use Mojo::Webqq;
-my $client = Mojo::Webqq->new(log_encoding=>\"utf-8\");
-$client->load(\"ShowMsg\");
-$client->load(\"MiPush\",data=>{
+my \$client = Mojo::Webqq->new(log_encoding=>\"utf-8\");
+\$client->load(\"ShowMsg\");
+\$client->load(\"MiPush\",data=>{
     registration_ids=>[\"\"],
     allow_group=>[\"接收群消息的号码，如需要推送全部群消息可删除这一行，每个群号码之间使用 \"\", 分隔\"],
     ban_group=>[],
@@ -80,9 +80,9 @@ $client->load(\"MiPush\",data=>{
 }
 Mojowxmi(){  #mojowx mipush about
 	echo "use Mojo::Weixin;
-my $client = Mojo::Weixin->new(log_encoding=>\"utf-8\");
-$client->load(\"ShowMsg\");
-$client->load(\"MiPush\",data=>{
+my \$client = Mojo::Weixin->new(log_encoding=>\"utf-8\");
+\$client->load(\"ShowMsg\");
+\$client->load(\"MiPush\",data=>{
     registration_ids=>[\"\"],
     allow_group=>[\"接收群消息的名称，如需要推送全部群消息可删除这一行，每个群号码之间使用 \"\", 分隔\"],
     ban_group=>[],
@@ -92,18 +92,18 @@ $client->load(\"MiPush\",data=>{
 });">>/root/wx.pl
 }
 Mojoqqopen(){  #openqq
-	echo "$client->load(\"Openqq\",data=>{
+	echo "\$client->load(\"Openqq\",data=>{
     listen => [{host=>\"0.0.0.0\",port=>5000}, ] ,
 });
 #不需要 APP 内回复功能请删除以上三行（不包括被 # 号注释掉的几行）
-$client->run();">>/root/qq.pl
+\$client->run();">>/root/qq.pl
 }
 Mojowxopen(){  #openwx
-	echo "$client->load(\"Openwx\",data=>{
+	echo "\$client->load(\"Openwx\",data=>{
     listen => [{host=>\"0.0.0.0\",port=>5000}, ] ,
 });
 #不需要 APP 内回复功能请删除以上三行（不包括被 # 号注释掉的几行）
-$client->run();">>/root/wx.pl
+\$client->run();">>/root/wx.pl
 }
 delqq(){  #judgment qq.pl
 	if [ -f "/root/qq.pl" ]; then
