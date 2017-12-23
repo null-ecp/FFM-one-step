@@ -28,13 +28,7 @@ Selecterr(){
 	sleep 3s
 	exit
 }
-file = "/root/qq.pl"
 Mojoqq(){
-	if [ -f $file ]; then
-		rm -rf $file
-	else 
-		touch $file
-	fi
 	echo 'use Mojo::Webqq;
 my $client = Mojo::Webqq->new(log_encoding=>"utf-8");
 $client->load("ShowMsg");
@@ -69,6 +63,11 @@ $client->run();'>>~/qq.pl
 echo '是否安装Mojoqq(y/n)'
 read select
 if [ $select = y ]; then
+	if [ -f $file ]; then
+		rm -rf $file
+	else 
+		touch $file
+	fi
 	Mojoqq
 else
 	exit
