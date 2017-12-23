@@ -36,19 +36,19 @@ Selecterr(){
 	exit
 }
 Mojoqqgcm(){ #MOjoqq GCM about
-	echo "use Mojo::Webqq;
+	echo -e 'use Mojo::Webqq;
 my $client = Mojo::Webqq->new(log_encoding=>"utf-8");
 $client->load("ShowMsg");
 $client->load("GCM",data=>{
-    api_url => 'https://gcm-http.googleapis.com/gcm/send',
-    api_key=>'AIzaSyB18io0hduB_3uHxKD3XaebPCecug27ht8',
+    api_url => \'https://gcm-http.googleapis.com/gcm/send\',
+    api_key=>\'AIzaSyB18io0hduB_3uHxKD3XaebPCecug27ht8\',
     registration_ids=>["输入你自己从 GCMForMojo APP中获取到的令牌"],
     allow_group=>["接收群消息的号码，如需要推送全部群消息可删除这一行，每个群号码之间使用 "", 分隔"],
     ban_group=>[],
     allow_discuss=>[],
     ban_discuss=>[],
     #此处为讨论组，填写格式同上
-});">>/root/qq.pl
+});'>>/root/qq.pl
 }
 Mojowxgcm(){ #mojowx GCM about
 	echo "use Mojo::Weixin;
