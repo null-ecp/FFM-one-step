@@ -1,4 +1,11 @@
 #!/bin/bash
+#======================================================
+#	System Required: CentOS 6+,Debian8+,Ubuntu14+
+#	Description: FFMforMojo server
+#	Version: 1.0.5
+#	Author: null-ecp
+#	Blog: https://blog.null26.com/
+#=======================================================
 Centos(){  #centos install about
 	yum makecache
 	yum -y groupinstall "Development Tools"
