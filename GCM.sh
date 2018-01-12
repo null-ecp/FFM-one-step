@@ -2,7 +2,7 @@
 #======================================================
 #	System Required: CentOS 6+,Debian8+,Ubuntu14+
 #	Description: GCMforMojo server
-#	Version: 1.0.2
+#	Version: 1.0.3
 #	Author: null-ecp
 #	Blog: https://blog.null26.com/
 #=======================================================
@@ -37,7 +37,9 @@ Selecterr(){
 }
 Mojoqqgcm(){ #MOjoqq GCM about
 	echo -e "use Mojo::Webqq;
-my \$client = Mojo::Webqq->new(log_encoding=>\"utf-8\");
+use Webqq::Encryption qw(pwd_encrypt);
+use Digest::MD5 qw(md5_hex);
+my \$client = Mojo::Webqq->new(log_encoding=>\"utf-8\",pwd=>Digest::MD5::md5_hex('你的qq密码'));
 \$client->load(\"ShowMsg\");
 \$client->load(\"GCM\",data=>{
     api_url => 'https://gcm-http.googleapis.com/gcm/send',
@@ -65,9 +67,11 @@ my \$client = Mojo::Weixin->new(log_encoding=>\"utf-8\");
     #此处为讨论组，填写格式同上
 });">>/root/wx.pl
 }
-Mojoqqmi(){  #mojoqq mioush about
+Mojoqqmi(){  #mojoqq mipush about
 	echo "use Mojo::Webqq;
-my \$client = Mojo::Webqq->new(log_encoding=>\"utf-8\");
+use Webqq::Encryption qw(pwd_encrypt);
+use Digest::MD5 qw(md5_hex);
+my \$client = Mojo::Webqq->new(log_encoding=>\"utf-8\",pwd=>Digest::MD5::md5_hex('你的qq密码'));
 \$client->load(\"ShowMsg\");
 \$client->load(\"MiPush\",data=>{
     registration_ids=>[\"\"],#输入你自己从 GCMForMojo APP中获取到的令牌
