@@ -2,28 +2,32 @@
 #======================================================
 #	System Required: CentOS 6+,Debian8+,Ubuntu14+
 #	Description: FFMforMojo server
-#	Version: 1.0.5
+#	Version: 1.0.6
 #	Author: null-ecp
 #	Blog: https://blog.null26.com/
 #=======================================================
 Centos(){  #centos install about
 	yum makecache
 	yum -y groupinstall "Development Tools"
-	yum install vim git openssl-devel \
+	yum install -y vim git openssl-devel \
 		perl cpan make gcc g++
 }
 Ubuntu(){  #Ubuntu install about
 	apt-get update
-	apt-get upgrade
-	apt-get install build-essential \
+	apt-get upgrade -y
+	apt-get install -y build-essential \
 		perl vim libssl-dev \
-		curl screen git
+		curl screen git \
+		libcrypt-openssl-bignum-perl \
+		libcrypt-openssl-rsa-perl
 }
 Debian(){  #Debian install about
 	apt-get update
+	apt-get upgrade -y
 	apt-get -y install perl vim openssl ca-certificates \
 		libssl-dev curl build-essential screen git \
-		libnet-ssleay-perl libio-socket-ssl-perl
+		libnet-ssleay-perl libio-socket-ssl-perl \
+		libcrypt-openssl-bignum-perl libcrypt-openssl-rsa-perl
 }
 Uninstall(){
 	echo 'Uninstall FFM Server,Exiting...'
@@ -36,6 +40,7 @@ Selecterr(){
 	exit
 }
 #system select
+clear
 echo -e 'Please select your system(input Option number)
 1)Centos
 2)Ubuntu
@@ -92,6 +97,7 @@ curl -L https://cpanmin.us | perl - App::cpanminus
 for i in $(seq 1 3):
 do
 	cpanm Mojo::Webqq
+	cpanm Webqq::Encryption
 	sleep 2s
 done
 
