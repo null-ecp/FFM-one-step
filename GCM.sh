@@ -9,13 +9,13 @@
 Centos(){  #centos install about
 	yum makecache
 	yum -y groupinstall "Development Tools"
-	yum install vim git openssl-devel \
+	yum install -y vim git openssl-devel \
 		perl cpan make gcc g++
 }
 Ubuntu(){  #Ubuntu install about
 	apt-get update
 	apt-get upgrade
-	apt-get install build-essential \
+	apt-get -y install build-essential \
 		perl vim libssl-dev \
 		curl screen git
 }
