@@ -12,6 +12,11 @@ Centos(){  #centos install about
 	yum install -y vim git openssl-devel \
 		perl cpan make gcc g++
 }
+Fedora(){  #Fedora install about
+	dnf -y groupinstall "Development Tools"
+	dnf install -y vim git openssl-devel \
+		perl cpan make gcc
+}
 Ubuntu(){  #Ubuntu install about
 	apt-get update
 	apt-get upgrade
@@ -183,6 +188,7 @@ echo -e 'Please select your system(input Option number)
 1)Centos
 2)Ubuntu
 3)debian
+4)Fedora
 -----------------------------------------'
 read sysnum
 if [ $sysnum = 1 ]; then
@@ -219,6 +225,19 @@ elif [ $sysnum = 3 ]; then
 		Installgfm
 		sleep 3s
 		Debian
+	elif [ $temp = n ]; then
+		Uninstall
+	else
+		Selecterr
+	fi
+elif [ $sysnum = 4 ]; then
+	echo 'Do you want to install Fedora’s FFM?(y/n)
+---------------------------------'
+	read temp
+	if [ $temp = y ]; then
+		Installgfm
+		sleep 3s
+		Fedora
 	elif [ $temp = n ]; then
 		Uninstall
 	else
