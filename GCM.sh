@@ -252,7 +252,7 @@ curl -L https://cpanmin.us | perl - App::cpanminus --force
 #install Mojoqq
 for i in $(seq 1 3):
 do
-	cpanm Mojo::Webqq --fprce
+	cpanm Mojo::Webqq --force
 	sleep 2s
 done
 #install Mojowx
