@@ -42,8 +42,6 @@ Selecterr(){
 }
 Mojoqqgcm(){ #MOjoqq GCM about
 	echo -e "use Mojo::Webqq;
-use Webqq::Encryption qw(pwd_encrypt);
-use Digest::MD5 qw(md5_hex);
 my \$client = Mojo::Webqq->new(log_encoding=>\"utf-8\",pwd=>Digest::MD5::md5_hex('你的qq密码'));
 \$client->load(\"ShowMsg\");
 \$client->load(\"GCM\",data=>{
@@ -74,8 +72,6 @@ my \$client = Mojo::Weixin->new(log_encoding=>\"utf-8\");
 }
 Mojoqqmi(){  #mojoqq mipush about
 	echo "use Mojo::Webqq;
-use Webqq::Encryption qw(pwd_encrypt);
-use Digest::MD5 qw(md5_hex);
 my \$client = Mojo::Webqq->new(log_encoding=>\"utf-8\",pwd=>Digest::MD5::md5_hex('你的qq密码'));
 \$client->load(\"ShowMsg\");
 \$client->load(\"MiPush\",data=>{
@@ -183,6 +179,7 @@ Installgfm(){
 		Selecterr
 	fi
 }
+clear
 # system select and GCMformojo version select
 echo -e 'Please select your system(input Option number)
 1)Centos
