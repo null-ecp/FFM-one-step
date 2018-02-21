@@ -2,7 +2,7 @@
 #======================================================
 #	System Required: CentOS 6+,Debian8+,Ubuntu14+
 #	Description: GCMforMojo server
-#	Version: 1.0.5
+#	Version: 1.0.6
 #	Author: null-ecp
 #	Blog: https://www.null26.com/
 #=======================================================
