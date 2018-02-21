@@ -2,9 +2,9 @@
 #======================================================
 #	System Required: CentOS 6+,Debian8+,Ubuntu14+
 #	Description: GCMforMojo server
-#	Version: 1.0.3
+#	Version: 1.0.4
 #	Author: null-ecp
-#	Blog: https://blog.null26.com/
+#	Blog: https://www.null26.com/
 #=======================================================
 Centos(){  #centos install about
 	yum makecache
@@ -205,7 +205,7 @@ if [ $sysnum = 1 ]; then
 		Selecterr
 	fi
 elif [ $sysnum = 2 ]; then
-	echo 'Do you want to install Ubuntu’s FFM?(y/n)
+	echo 'Do you want to install Ubuntu’s GCMforMojo?(y/n)
 ---------------------------------'
 	read temp
 	if [ $temp = y ]; then
@@ -218,7 +218,7 @@ elif [ $sysnum = 2 ]; then
 		Selecterr
 	fi
 elif [ $sysnum = 3 ]; then
-	echo 'Do you want to install Debian’s FFM?(y/n)
+	echo 'Do you want to install Debian’s GCMforMojo?(y/n)
 ---------------------------------'
 	read temp
 	if [ $temp = y ]; then
@@ -231,7 +231,7 @@ elif [ $sysnum = 3 ]; then
 		Selecterr
 	fi
 elif [ $sysnum = 4 ]; then
-	echo 'Do you want to install Fedora’s FFM?(y/n)
+	echo 'Do you want to install Fedora’s GCMforMojo?(y/n)
 ---------------------------------'
 	read temp
 	if [ $temp = y ]; then
@@ -247,18 +247,18 @@ else
 	Selecterr
 fi
 #install cpanm
-curl -L https://cpanmin.us | perl - App::cpanminus
+curl -L https://cpanmin.us | perl - App::cpanminus --force
 
 #install Mojoqq
 for i in $(seq 1 3):
 do
-	cpanm Mojo::Webqq
+	cpanm Mojo::Webqq --fprce
 	sleep 2s
 done
 #install Mojowx
 for i in $(seq 1 3):
 do
-	cpanm Mojo::Weixin
+	cpanm Mojo::Weixin --force
 	sleep 2s
 done
 
