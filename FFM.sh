@@ -10,7 +10,14 @@ Centos(){  #centos install about
 	yum makecache
 	yum -y groupinstall "Development Tools"
 	yum install -y vim git openssl-devel \
-		perl cpan make gcc g++
+		perl cpan make gcc \
+		perl-Crypt-OpenSSL-RSA
+}
+Fedora(){  #Fedora install about
+	dnf -y groupinstall "Development Tools"
+	dnf install -y vim git openssl-devel \
+		perl cpan make gcc \
+		perl-Crypt-OpenSSL-RSA
 }
 Ubuntu(){  #Ubuntu install about
 	apt-get update
@@ -45,6 +52,7 @@ echo -e 'Please select your system(input Option number)
 1)Centos
 2)Ubuntu
 3)debian
+4)Fedora
 -----------------------------------------'
 read sysnum
 if [ $sysnum = 1 ]; then
@@ -86,18 +94,31 @@ elif [ $sysnum = 3 ]; then
 	else
 		Selecterr
 	fi
+elif [ $sysnum = 4 ]; then
+	echo 'Do you want to install Fedora’s FFM?(y/n)
+---------------------------------'
+	read temp
+	if [ $temp = y ]; then
+		echo 'Installing Fedora‘s FFM...'
+		sleep 3s
+		Fedora
+	elif [ $temp = n ]; then
+		Uninstall
+	else
+		Selecterr
+	fi
 else
 	Selecterr
 fi
 
 #install cpanm
-curl -L https://cpanmin.us | perl - App::cpanminus
+curl -L https://cpanmin.us | perl - App::cpanminus --force
 
 #install Mojoqq
 for i in $(seq 1 3):
 do
-	cpanm Mojo::Webqq
-	cpanm Webqq::Encryption
+	cpanm Mojo::Webqq --force
+	cpanm Webqq::Encryption --force
 	sleep 2s
 done
 
