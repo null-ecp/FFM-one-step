@@ -1,11 +1,11 @@
 #!/bin/bash
-#======================================================
-#	System Required: CentOS 6+,Debian8+,Ubuntu14+
-#	Description: GCMforMojo server
-#	Version: 1.0.6
-#	Author: null-ecp
-#	Blog: https://www.null26.com/
-#=======================================================
+#===============================================================
+#    System Required:   CentOS 6+,Debian8+,Ubuntu14+,Fedora 26+
+#    Description: 	GCMforMojo server
+#    Version:   	1.0.6
+#    Author: 	 	null-ecp
+#    Blog: 		https://www.null26.com/
+#===============================================================
 Centos(){  #centos install about
 	yum makecache
 	yum -y groupinstall "Development Tools"
@@ -32,12 +32,12 @@ Debian(){  #Debian install about
 }
 Uninstall(){
 	echo 'Uninstall GCMforMojo Server,Exiting...'
-	sleep 3s
+	sleep 2s
 	exit
 }
 Selecterr(){
 	echo 'Input Option error,Exiting...'
-	sleep 3s
+	sleep 2s
 	exit
 }
 Mojoqqgcm(){ #MOjoqq GCM about
