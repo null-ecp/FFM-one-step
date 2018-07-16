@@ -2,7 +2,7 @@
 #===============================================================
 #     System Required:   CentOS 6+,Debian8+,Ubuntu14+,Fedora 26+
 #     Description:       FFMforMojo server
-#     Version:           1.0.7
+#     Version:           1.0.8
 #     Author:            null-ecp
 #     Blog:              https://www.null26.com/
 #===============================================================
@@ -140,3 +140,7 @@ git clone https://github.com/RikkaApps/FCM-for-Mojo-Server.git
 cd FCM-for-Mojo-Server
 cp config.example.js config.js
 npm install
+
+#solve http 404 error
+echo '# mojoqq dns
+112.90.143.119 web2.qq.com' >> /etc/hosts
