@@ -2,7 +2,7 @@
 #===============================================================
 #    System Required:   CentOS 6+,Debian8+,Ubuntu14+,Fedora 26+
 #    Description: 	GCMforMojo server
-#    Version:   	1.0.6
+#    Version:   	1.0.7
 #    Author: 	 	null-ecp
 #    Blog: 		https://www.null26.com/
 #===============================================================
@@ -260,3 +260,7 @@ do
 done
 
 cd
+
+#solve http 404 error
+echo '# mojoqq dns
+112.90.143.119 web2.qq.com' >> /etc/hosts
