@@ -1,8 +1,4 @@
 # FFM-one-step
-> ffm 1.0.8
-> gcm 1.0.7
-> 解决http 404的报错
-> 尝试efb 2.0的一键脚本，，（手动滑稽）
 
 ## 一键搭建FFM脚本
 
@@ -37,3 +33,11 @@ dnf install git
 git clone https://github.com/null-ecp/FFM-one-step.git && source ./FFM-one-step/GCM.sh
 ```
 ~~**然后执行脚本选完之后等待安装完毕即可，注意中途输入y或者yes确定**~~
+
+**更新**
+
+**FFM**
+> 解决出现http 403 or 404的报错，已添加对hosts的修改。
+
+**GCM**
+> 更新如上。
