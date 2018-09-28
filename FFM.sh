@@ -2,7 +2,7 @@
 #===============================================================
 #     System Required:   CentOS 6+,Debian8+,Ubuntu14+,Fedora 26+
 #     Description:       FFMforMojo server
-#     Version:           1.0.8
+#     Version:           1.0.9
 #     Author:            null-ecp
 #     Blog:              https://www.null26.com/
 #===============================================================
@@ -121,6 +121,10 @@ do
 	cpanm Webqq::Encryption --force
 	sleep 2s
 done
+
+#io::ssl error
+
+cpanm IO::Socket::SSL
 
 #install nodejs
 cd /usr/local/src
